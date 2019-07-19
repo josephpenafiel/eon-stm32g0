@@ -48,7 +48,41 @@ extern "C"
  * Pin Definitions
  */
 
-#if defined(STM32G070RB) || defined(STM32G071RB)
+#if defined(STM32G070KB) // lqfp32
+#define PA0 0
+#define PA1 1
+#define PA2 2
+#define PA3 3
+#define PA4 4
+#define PA5 5
+#define PA6 6
+#define PA7 7
+#define PA8 8
+#define PA9 9
+#define PA10 10
+#define PA11 11
+#define PA12 12
+#define PA13 13
+#define PA15 14
+
+#define PB0 15
+#define PB1 16
+#define PB2 17
+#define PB3 18
+#define PB4 19
+#define PB5 20
+#define PB6 21
+#define PB7 22
+#define PB8 23
+#define PB9 24
+
+#define PC6 25
+#define PC14 26
+#define PC15 27
+
+#endif
+
+#if defined(STM32G070RB) || defined(STM32G071RB) // lqfp64
 // **** Pins
 #define PA0 0
 #define PA1 1
@@ -112,11 +146,11 @@ extern "C"
 
 #define PF0 56
 #define PF1 57
+
 #endif
 
-#if defined(STM32G070xx)
+#if defined(STM32G070xx) || defined(STM32G071xx)
   // **** Special Pins
-
 #define AN_PA0 PA0
 #define AN_PA1 PA1
 #define AN_PA2 PA2
@@ -129,19 +163,27 @@ extern "C"
 #define AN_PB0 PB0
 #define AN_PB1 PB1
 #define AN_PB2 PB2
+#if defined PB10
 #define AN_PB10 PB10
+#endif
+#if defined(PB11)
 #define AN_PB11 PB11
+#endif
+#if defined(PB12)
 #define AN_PB12 PB12
+#endif
 
+#if defined(PC4)
 #define AN_PC4 PC4
+#define TX1_PC4 PC4
+#endif
+#if defined(PC5)
 #define AN_PC5 PC5
+#define RX1_PC5 PC5
+#endif
 
 // TIM //
-#define TIM15CH1_PA2 PA2
-#define TIM15CH2_PA3 PA3
 #define TIM14CH1_PA4 PA4
-#define TIM16CH1_PA6 PA6
-#define TIM17CH1_PA7 PA7
 #define TIM1CH1_PA8 PA8
 #define TIM1CH2_PA9 PA9
 #define TIM1CH3_PA10 PA10
@@ -155,25 +197,51 @@ extern "C"
 #define TIM1CH3_PB6 PB6
 #define TIM16CH1_PB8 PB8
 #define TIM17CH1_PB9 PB9
+#if defined(PB14)
 #define TIM15CH1_PB14 PB14
+#endif
+#if defined(PB15)
 #define TIM15CH2_PB15 PB15
+#endif
 
+#if defined(PC1)
 #define TIM15CH1_PC1 PC1
+#endif
+
+#if defined(PC2)
 #define TIM15CH2_PC2 PC2
+#define MISO2_PC2 PC2
+#endif
+
 #define TIM3CH1_PC6 PC6
+#if defined(PC7)
 #define TIM3CH2_PC7 PC7
-#define TIM1CH1_PC8 PC8
-#define TIM1CH2_PC9 PC9
+#endif
+#if defined(PC10)
 #define TIM1CH3_PC10 PC10
+#define TX3_PC10 PC10
+#endif
+#if defined(PC11)
 #define TIM1CH4_PC11 PC11
+#define RX3_PC11 PC11
+#endif
+#if defined(PC12)
 #define TIM14CH1_PC12 PC12
+#endif
 
+#if defined(PD0)
 #define TIM16CH1_PD0 PD0
+#define CS2_PD0 PD0
+#endif
+#if defined(PD1)
 #define TIM17CH1_PD1 PD1
-
+#define SCK2_PD1 PD1
+#endif
+#if defined(PF0)
 #define TIM14CH1_PF0 PF0
+#endif
 
-// SPI //
+//SPI
 #define SCK2_PA0 PA0
 #define SCK1_PA1 PA1
 #define MOSI1_PA2 PA2
@@ -198,26 +266,70 @@ extern "C"
 #define MOSI2_PB7 PB7
 #define SCK2_PB8 PB8
 #define CS2_PB9 PB9
+
+#if defined(PB10)
 #define SCK2_PB10 PB10
+#define SCL2_PB10 PB10
+#define TX3_PB10 PB10
+#endif
+
+#if defined(PB11)
 #define MOSI2_PB11 PB11
+#define SDA2_PB11 PB11
+#define RX3_PB11 PB11
+#endif
+
+#if defined(PB12)
 #define CS2_PB12 PB12
+#endif
+
+#if defined(PB13)
 #define SCK2_PB13 PB13
+#define SCL2_PB13 PB13
+#endif
+
+#if defined(PB14)
 #define MISO2_PB14 PB14
+#define SDA2_PB14 PB14
+#endif
+
+#if defined(PB15)
 #define MOSI2_PB15 PB15
+#endif
 
-#define MISO2_PC2 PC2
+#if defined(PC3)
 #define MOSI2_PC3 PC3
+#endif
 
-#define CS2_PD0 PD0
-#define SCK2_PD1 PD1
+#if defined(PD3)
 #define MISO2_PD3 PD3
-#define MOSI2_PD4 PD4
-#define MISO1_PD5 PD5
-#define MOSI1_PD6 PD6
-#define SCK1_PD8 PD8
-#define CS1_PD9 PD9
+#endif
 
-// I2C //
+#if defined(PD4)
+#define MOSI2_PD4 PD4
+#endif
+
+#if defined(PD5)
+#define MISO1_PD5 PD5
+#define TX2_PD5 PD5
+#endif
+
+#if defined(PD6)
+#define MOSI1_PD6 PD6
+#define RX2_PD6 PD6
+#endif
+
+#if defined(PD8)
+#define SCK1_PD8 PD8
+#define TX3_PD8 PD8
+#endif
+
+#if defined(PD9)
+#define CS1_PD9 PD9
+#define RX3_PD9 PD9
+#endif
+
+//I2C
 #define SCL1_PA9 PA9
 #define SDA1_PA10 PA10
 #define SCL2_PA11 PA11
@@ -227,12 +339,8 @@ extern "C"
 #define SDA1_PB7 PB7
 #define SCL1_PB8 PB8
 #define SDA1_PB9 PB9
-#define SCL2_PB10 PB10
-#define SDA2_PB11 PB11
-#define SCL2_PB13 PB13
-#define SDA2_PB14 PB14
 
-// USART //
+//USART
 #define TX4_PA0 PA0
 #define RX4_PA1 PA1
 #define TX2_PA2 PA2
@@ -248,171 +356,39 @@ extern "C"
 #define RX1_PB7 PB7
 #define TX3_PB8 PB8
 #define RX3_PB9 PB9
-#define TX3_PB10 PB10
-#define RX3_PB11 PB11
 
-#define TX1_PC4 PC4
-#define RX1_PC5 PC5
-#define TX3_PC10 PC10
-#define RX3_PC11 PC11
+#endif
 
-#define TX2_PD5 PD5
-#define RX2_PD6 PD6
-#define TX3_PD8 PD8
-#define RX3_PD9 PD9
+#if defined(STM32G070xx)
+//TIM
+#define TIM15CH1_PA2 PA2
+#define TIM15CH2_PA3 PA3
+#define TIM16CH1_PA6 PA6
+#define TIM17CH1_PA7 PA7
+
+#if defined(PC8)
+#define TIM1CH1_PC8 PC8
+#endif
+#if defined(PC9)
+#define TIM1CH2_PC9 PC9
+#endif
 
 #endif
 
 #if defined(STM32G071xx)
-
-#define AN_PA0 PA0
-#define AN_PA1 PA1
-#define AN_PA2 PA2
-#define AN_PA3 PA3
-#define AN_PA4 PA4
-#define AN_PA5 PA5
-#define AN_PA6 PA6
-#define AN_PA7 PA7
-
-#define AN_PB0 PB0
-#define AN_PB1 PB1
-#define AN_PB2 PB2
-#define AN_PB10 PB10
-#define AN_PB11 PB11
-#define AN_PB12 PB12
-
-#define AN_PC4 PC4
-#define AN_PC5 PC5
-
-// TIM //
+//TIM
 #define TIM2CH2_PA1 PA1
 #define TIM2CH3_PA2 PA2
 #define TIM2CH4_PA3 PA3
-#define TIM14CH1_PA4 PA4
 #define TIM3CH1_PA6 PA6
 #define TIM3CH2_PA7 PA7
-#define TIM1CH1_PA8 PA8
-#define TIM1CH2_PA9 PA9
-#define TIM1CH3_PA10 PA10
-#define TIM1CH4_PA11 PA11
 
-#define TIM3CH3_PB0 PB0
-#define TIM3CH4_PB1 PB1
-#define TIM1CH2_PB3 PB3
-#define TIM3CH1_PB4 PB4
-#define TIM3CH2_PB5 PB5
-#define TIM1CH3_PB6 PB6
-#define TIM16CH1_PB8 PB8
-#define TIM17CH1_PB9 PB9
 #define TIM2CH3_PB10 PB10
 #define TIM2CH4_PB11 PB11
-#define TIM15CH1_PB14 PB14
-#define TIM15CH2_PB15 PB15
 
-#define TIM15CH1_PC1 PC1
-#define TIM15CH2_PC2 PC2
 #define TIM2CH2_PC5 PC5
-#define TIM3CH1_PC6 PC6
-#define TIM3CH2_PC7 PC7
 #define TIM3CH3_PC8 PC8
 #define TIM3CH4_PC9 PC9
-#define TIM1CH3_PC10 PC10
-#define TIM1CH4_PC11 PC11
-#define TIM14CH1_PC12 PC12
-
-#define TIM16CH1_PD0 PD0
-#define TIM17CH1_PD1 PD1
-
-#define TIM14CH1_PF0 PF0
-
-// SPI //
-#define SCK2_PA0 PA0
-#define SCK1_PA1 PA1
-#define MOSI1_PA2 PA2
-#define MISO2_PA3 PA3
-#define MOSI2_PA4 PA4
-#define SCK1_PA5 PA5
-#define MISO1_PA6 PA6
-#define MOSI1_PA7 PA7
-#define CS2_PA8 PA8
-#define MISO2_PA9 PA9
-#define MOSI2_PA10 PA10
-#define MISO1_PA11 PA11
-#define MOSI1_PA12 PA12
-#define CS1_PA15 PA15
-
-#define CS1_PB0 PB0
-#define MISO2_PB2 PB2
-#define SCK1_PB3 PB3
-#define MISO1_PB4 PB4
-#define MOSI1_PB5 PB5
-#define MISO2_PB6 PB6
-#define MOSI2_PB7 PB7
-#define SCK2_PB8 PB8
-#define CS2_PB9 PB9
-#define SCK2_PB10 PB10
-#define MOSI2_PB11 PB11
-#define CS2_PB12 PB12
-#define SCK2_PB13 PB13
-#define MISO2_PB14 PB14
-#define MOSI2_PB15 PB15
-
-#define MISO2_PC2 PC2
-#define MOSI2_PC3 PC3
-
-#define CS2_PD0 PD0
-#define SCK2_PD1 PD1
-#define MISO2_PD3 PD3
-#define MOSI2_PD4 PD4
-#define MISO1_PD5 PD5
-#define MOSI1_PD6 PD6
-#define SCK1_PD8 PD8
-#define CS1_PD9 PD9
-
-// I2C //
-#define SCL1_PA9 PA9
-#define SDA1_PA10 PA10
-#define SCL2_PA11 PA11
-#define SDA2_PA12 PA12
-
-#define SCL1_PB6 PB6
-#define SDA1_PB7 PB7
-#define SCL1_PB8 PB8
-#define SDA1_PB9 PB9
-#define SCL2_PB10 PB10
-#define SDA2_PB11 PB11
-#define SCL2_PB13 PB13
-#define SDA2_PB14 PB14
-
-// USART //
-#define TX4_PA0 PA0
-#define RX4_PA1 PA1
-#define TX2_PA2 PA2
-#define RX2_PA3 PA3
-#define TX3_PA5 PA5
-#define TX1_PA9 PA9
-#define RX1_PA10 PA10
-#define RX2_PA15 PA15
-
-#define RX3_PB0 PB0
-#define TX3_PB2 PB2
-#define TX1_PB6 PB6
-#define RX1_PB7 PB7
-#define TX3_PB8 PB8
-#define RX3_PB9 PB9
-#define TX3_PB10 PB10
-#define RX3_PB11 PB11
-
-#define TX1_PC4 PC4
-#define RX1_PC5 PC5
-#define TX3_PC10 PC10
-#define RX3_PC11 PC11
-
-#define TX2_PD5 PD5
-#define RX2_PD6 PD6
-#define TX3_PD8 PD8
-#define RX3_PD9 PD9
-
 #endif
 
 // **** Other Pin Definitions
